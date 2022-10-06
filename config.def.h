@@ -1,31 +1,29 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx    = 2;        /* border pixel of windows */
-static const unsigned int gappx       = 7;        /* gaps between windows */
-static const unsigned int snap        = 32;       /* snap pixel */
-static const int showbar              = 1;        /* 0 means no bar */
-static const int topbar               = 1;        /* 0 means bottom bar */
-static const char *fonts[]            = { "monospace:size=10" };
-static const char dmenufont[]         = "monospace:size=10";
-static const char col_gray1[]         = "#222222";
-static const char col_gray2[]         = "#444444";
-static const char col_gray3[]         = "#bbbbbb";
-static const char col_gray4[]         = "#eeeeee";
-static const char col_cyan[]          = "#005577";
-static const char col_orange[]        = "#ffa400";
-static const char col_purple[]         = "#702963";
-static const unsigned int baralpha    = 240;
-static const unsigned int borderalpha = 252;
-static const char *colors[][3]        = {
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int gappx     = 5;        /* gaps between windows */
+static const unsigned int snap      = 32;       /* snap pixel */
+static const int showbar            = 1;        /* 0 means no bar */
+static const int topbar             = 1;        /* 0 means bottom bar */
+static const char *fonts[]          = { "monospace:size=10" };
+static const char dmenufont[]       = "monospace:size=10";
+static const char col_gray1[]       = "#222222";
+static const char col_gray2[]       = "#444444";
+static const char col_gray3[]       = "#bbbbbb";
+static const char col_gray4[]       = "#eeeeee";
+static const char col_cyan[]        = "#005577";
+static const char col_purple[]      = "#702963";
+static const char col_mauve[]       = "#cba6f7";
+static const char col_surface0[]    = "#313244";
+static const char col_base[]        = "#1e1e2e";
+static const char col_mantle[]      = "#181825";
+static const char col_crust[]       = "#181926";
+
+static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_purple,  col_purple  },
-};
-static const unsigned int alphas[][3] = {
-	/*               fg         bg        border   */
-	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
-	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+	[SchemeNorm] = { col_mauve, col_mantle, col_mantle },
+	[SchemeSel]  = { col_crust, col_mauve,  col_mauve },
 };
 
 /* tagging */
@@ -38,7 +36,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 }, */
 };
 
 /* layout(s) */
@@ -52,8 +50,6 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-	{ "|M|",      centeredmaster },
-	{ ">M>",      centeredfloatingmaster },
 };
 
 /* key definitions */
@@ -68,8 +64,8 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_purple, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_base, "-nf", col_mauve, "-sb", col_mauve, "-sf", col_base, NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
