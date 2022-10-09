@@ -6,24 +6,24 @@ static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
+static const char *fonts[]          = { "HackNerdFont:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char col_purple[]      = "#702963";
 static const char col_mauve[]       = "#cba6f7";
 static const char col_surface0[]    = "#313244";
 static const char col_base[]        = "#1e1e2e";
 static const char col_mantle[]      = "#181825";
 static const char col_crust[]       = "#181926";
+static const char col_text[]        = "#cdd6f4";
+static const char col_teal[]        = "#94e2d5";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_mauve, col_mantle, col_mantle },
-	[SchemeSel]  = { col_crust, col_mauve,  col_mauve },
+	[SchemeNorm] = { col_text, col_mantle, col_mantle },
+	[SchemeSel]  = { col_crust, col_teal,  col_teal },
 };
 
 /* tagging */
@@ -64,14 +64,16 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_base, "-nf", col_mauve, "-sb", col_mauve, "-sf", col_base, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_base, "-nf", col_text, "-sb", col_teal, "-sf", col_base, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *vimcmd[]   = { "neovide", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_space,  spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_v,      spawn,          {.v = vimcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
