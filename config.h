@@ -1,26 +1,54 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=12", "FiraCode Nerd Font Mono:size=20"};
 static const char dmenufont[]       = "monospace:size=12";
-static const char col_gray1[]       = "#282828";
-static const char col_gray2[]       = "#504945";
-static const char col_gray3[]       = "#bdae93";
-static const char col_gray4[]       = "#ebdbb2";
-static const char col_cyan[]        = "#cc241d";
+
+
+static const char red[]      = "#cc241d";
+static const char green[]    = "#98971a";
+static const char yellow[]   = "#d79921";
+static const char blue[]     = "#458588";
+static const char purple[]   = "#b16286";
+static const char aqua[]     = "#689d61";
+static const char orange[]   = "#d65d0e";
+static const char gray[]     = "#928374";
+static const char l_red[]    = "#fb4934";
+static const char l_green[]  = "#b8bb26";
+static const char l_yellow[] = "#fabd2f";
+static const char l_blue[]   = "#83a598";
+static const char l_purple[] = "#d3869b";
+static const char l_aqua[]   = "#8ec07c";
+static const char l_orange[] = "#fe8019";
+static const char l_gray[]   = "#a89984";
+static const char bg[]       = "#282828";
+static const char fg[]       = "#ebdbb2";
+static const char bg0_h[]    = "#1d2021";
+static const char bg0_s[]    = "#32302f";
+static const char bg0[]      = "#282828";
+static const char bg1[]      = "#3c3836";
+static const char bg2[]      = "#504945";
+static const char bg3[]      = "#665c54";
+static const char bg4[]      = "#7c6f64";
+static const char fg0[]      = "#fbf1c7";
+static const char fg1[]      = "#ebdbb2";
+static const char fg2[]      = "#d5c4a1";
+static const char fg3[]      = "#bdae93";
+static const char fg4[]      = "#a89984";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_gray2,  col_gray1  },
+	[SchemeNorm] = { fg, bg1, bg2 },
+	[SchemeSel]  = { bg1, fg2, fg2 },
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -59,7 +87,7 @@ static const Layout layouts[] = {
 #define TERMINAL "st"
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", bg1, "-nf", fg, "-sb", l_orange, "-sf", bg1, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *editorcmd[] = { "st", "nvim", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
@@ -111,7 +139,6 @@ static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
