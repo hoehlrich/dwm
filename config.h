@@ -6,6 +6,7 @@ static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const int user_bh            = 12;       /* 2 is the default spacing around the bar's font */
 static const char *fonts[]          = { "monospace:size=12", "FiraCode Nerd Font Mono:size=20"};
 static const char dmenufont[]       = "monospace:size=12";
 
@@ -44,11 +45,16 @@ static const char fg4[]      = "#a89984";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { fg, bg1, bg2 },
-	[SchemeSel]  = { bg1, fg2, fg2 },
+	[SchemeSel]  = { fg2, bg1, fg2 },
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " };
+
+static const unsigned int ulinepad	   = 5;	/* horizontal padding between the underline and tag */
+static const unsigned int ulinestroke  = 2;	/* thickness / height of the underline */
+static const unsigned int ulinevoffset = 3;	/* how far above the bottom of the bar the line should appear */
+static const int ulineall 		       = 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 
 static const Rule rules[] = {
 	/* xprop(1):
