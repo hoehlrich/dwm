@@ -49,7 +49,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " };
+static const char *tags[] = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " };
 
 static const unsigned int ulinepad	   = 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke  = 2;	/* thickness / height of the underline */
@@ -93,10 +93,11 @@ static const Layout layouts[] = {
 #define TERMINAL "st"
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", bg1, "-nf", fg, "-sb", l_orange, "-sf", bg1, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-h", "30", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *editorcmd[] = { "st", "nvim", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
+static const char *mailcmd[] = { "st", "neomutt", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -104,6 +105,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_f,      spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = editorcmd } },
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mailcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
