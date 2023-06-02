@@ -98,6 +98,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *editorcmd[] = { "st", "nvim", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
 static const char *mailcmd[] = { "st", "neomutt", NULL };
+static const char *fbcmd[] = { "st", "lf", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -106,6 +107,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_f,      spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = editorcmd } },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mailcmd } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = fbcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
