@@ -49,7 +49,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " };
+static const char *tags[] = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " };
 
 static const unsigned int ulinepad	   = 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke  = 2;	/* thickness / height of the underline */
@@ -98,6 +98,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *editorcmd[] = { "st", "nvim", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
 static const char *mailcmd[] = { "st", "neomutt", NULL };
+static const char *fbcmd[] = { "st", "lf", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -106,6 +107,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_f,      spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = editorcmd } },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mailcmd } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = fbcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -117,7 +119,6 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -126,9 +127,16 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
-	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+	{ MODKEY,                       XK_m,      spawn,          SHCMD("pulseaudio-ctl mute") },
+	{ MODKEY,                       XK_minus,  spawn,          SHCMD("pulseaudio-ctl down") },
+	{ MODKEY,                       XK_equal,  spawn,          SHCMD("pulseaudio-ctl up") },
+	{ MODKEY|ShiftMask,             XK_equal,  spawn,          SHCMD("mpc volume +10") },
+	{ MODKEY|ShiftMask,             XK_minus,  spawn,          SHCMD("mpc volume -10") },
+	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("mpc next") },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("mpc prev") },
+	{ MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("mpc toggle") },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("mpc clear") },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("mpc shuffle") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
