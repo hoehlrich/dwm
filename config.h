@@ -7,7 +7,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 12;       /* 2 is the default spacing around the bar's font */
-static const char *fonts[]          = { "monospace:size=12", "FiraCode Nerd Font Mono:size=20"};
+static const char *fonts[]          = { "monospace:size=12", "FiraCodeNerdFontMono-Regular:size=20" };
 static const char dmenufont[]       = "monospace:size=12";
 
 
@@ -49,7 +49,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " };
+static const char *tags[] = { "  ", "  ", " 󰈙 ", "  ", "  ", "  ", "  ", "  ", "  " };
 
 static const unsigned int ulinepad	   = 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke  = 2;	/* thickness / height of the underline */
