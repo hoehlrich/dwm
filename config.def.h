@@ -2,12 +2,12 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 5;        /* gaps between windows */
+static const unsigned int gappx     = 0;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 12;       /* 2 is the default spacing around the bar's font */
-static const char *fonts[]          = { "monospace:size=12", "FiraCode Nerd Font Mono:size=20"};
+static const char *fonts[]          = { "monospace:size=12", "FiraCodeNerdFontMono-Regular:size=20" };
 static const char dmenufont[]       = "monospace:size=12";
 
 
@@ -49,7 +49,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " };
+static const char *tags[] = { "  ", "  ", " 󰈙 ", "  ", "  ", "  ", "  ", "  ", "  " };
 
 static const unsigned int ulinepad	   = 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke  = 2;	/* thickness / height of the underline */
@@ -97,8 +97,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-h", "30", NUL
 static const char *termcmd[]  = { "st", NULL };
 static const char *editorcmd[] = { "st", "nvim", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
-static const char *mailcmd[] = { "st", "neomutt", NULL };
-static const char *fbcmd[] = { "st", "lf", NULL };
+static const char *spotifycmd[] = { "st", "spt", NULL };
+static const char *fbcmd[] = { "st", "ranger", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -106,7 +106,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_f,      spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = editorcmd } },
-	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mailcmd } },
+	{ MODKEY,                       XK_s,      spawn,          {.v = spotifycmd } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = fbcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -127,9 +127,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_m,      spawn,          SHCMD("pulseaudio-ctl mute") },
-	{ MODKEY,                       XK_minus,  spawn,          SHCMD("pulseaudio-ctl down") },
-	{ MODKEY,                       XK_equal,  spawn,          SHCMD("pulseaudio-ctl up") },
+	{ MODKEY,                       XK_m,      spawn,          SHCMD("pamixer -t") },
+	{ MODKEY,                       XK_minus,  spawn,          SHCMD("pamixer -d 5") },
+	{ MODKEY,                       XK_equal,  spawn,          SHCMD("pamixer -i 5") },
 	{ MODKEY|ShiftMask,             XK_equal,  spawn,          SHCMD("mpc volume +10") },
 	{ MODKEY|ShiftMask,             XK_minus,  spawn,          SHCMD("mpc volume -10") },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("mpc next") },
