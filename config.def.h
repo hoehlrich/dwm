@@ -100,6 +100,7 @@ static const char *browsercmd[] = { "firefox", NULL };
 static const char *spotifycmd[] = { "st", "spt", NULL };
 static const char *fbcmd[] = { "st", "ranger", NULL };
 static const char *canvascmd[] = { "st", "canvas-tui", NULL };
+static const char *recipecmd[] = { "st", "nvim", "/home/henry/docs/notebook/personal/recipes/index.md" };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -108,6 +109,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_f,      spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = editorcmd } },
 	{ MODKEY,                       XK_s,      spawn,          {.v = spotifycmd } },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = recipecmd } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = fbcmd } },
     { MODKEY,                       XK_c,      spawn,          {.v = canvascmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
